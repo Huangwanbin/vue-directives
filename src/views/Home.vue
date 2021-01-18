@@ -40,7 +40,12 @@
     </div>
     <div class="clickOut">
         7.v-clickOut
-        <img v-if="isImgShow" v-clickOut="clickImgOut" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3363295869,2467511306&fm=26&gp=0.jpg" alt="">
+        <button>展示弹窗</button>
+    </div>
+    <div v-clickOut="clickImgOut" v-if="isImgShow" class="pop">
+          <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3363295869,2467511306&fm=26&gp=0.jpg" alt="">
+          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
+          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
     </div>
   </div>
 </template>
@@ -86,6 +91,24 @@ export default {
     height: 100%;
     position: relative;
   }
+  .copy {
+    margin-bottom: 50px;
+  }
+  .long-press {
+    margin-bottom: 50px;
+  }
+  .debounce {
+    margin-bottom: 50px;
+  }
+  .waterMarker {
+    margin-bottom: 50px;
+  }
+  .permission {
+    margin-bottom: 50px;
+  }
+  .clickOut {
+    margin-bottom: 50px;
+  }
   .draggable {
     position: absolute;
     bottom: 0;
@@ -93,5 +116,14 @@ export default {
     width: 300px;
     height: 300px;
     background-color: rgba(0, 0, 0, .6);
+  }
+  .pop {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 500px;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.7);
   }
 </style>
