@@ -40,7 +40,7 @@
     </div>
     <div class="clickOut">
         7.v-clickOut
-        <button>展示弹窗</button>
+        <button @click="isImgShow = true">展示弹窗</button>
     </div>
     <div v-clickOut="clickImgOut" v-if="isImgShow" class="pop">
           <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3363295869,2467511306&fm=26&gp=0.jpg" alt="">
@@ -60,7 +60,7 @@ export default {
       copyText: '',
       note: '',
       permission:'4',
-      isImgShow: true,
+      isImgShow: false,
     }
   },
   methods:{
@@ -118,7 +118,7 @@ export default {
     background-color: rgba(0, 0, 0, .6);
   }
   .pop {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);

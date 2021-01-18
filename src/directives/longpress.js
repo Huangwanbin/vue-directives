@@ -14,6 +14,10 @@ const longpress = {
           pressTimer = setTimeout(() => {
             handler()
           }, 2000)
+          //取消浏览器默认事件
+          el.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+          })
         }
       }
       // 取消计时器

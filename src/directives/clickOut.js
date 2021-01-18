@@ -1,6 +1,5 @@
 const clickOut = {
     bind(el,binding,vnode){
-        console.log(binding)
         function clickHandler(e) {
             //先判断电机的元素是否是本身，如果是本身，则返回
             if (el.contains(e.target)) {
@@ -14,7 +13,10 @@ const clickOut = {
         }
         // 给当前元素绑定个私有变量，方便在unbind中可以解除事件监听
         el.__vueClickOutside__ = clickHandler;
-        document.addEventListener('click',clickHandler);
+        //不加异步会有bug，瞬间触发clickHandler函数
+        setTimeout(() => {
+            document.addEventListener('click',clickHandler);
+        }, 0);
     },
     unbind(el,binding){
         //解除事件监听
