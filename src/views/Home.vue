@@ -13,14 +13,37 @@
       3.v-debounce
       <button v-debounce="debounce">debounce防抖</button>
     </div>
-    <div class="permission">
-      4.v-permission -- 待完善
-      当前权限{{permission}}
-      <p v-permission="permission" >权限为1的，可看</p>
-      <p v-permission="permission">权限为4的，可看</p>
-      <p v-permission="permission">权限为10的，不可看</p>
-      <button @click="changePermission(1)">点击+权限</button>
-      <button @click="changePermission(-1)">点击-权限</button>
+    <div class="scrollPop">
+      4.v-scrollPop
+      <button @click="isScrollPopShow = true">点击打开弹窗</button>
+      <div class="scroll-pop" v-if="isScrollPopShow" v-scrollPop>
+        <button class="close" @click="isScrollPopShow = false">X</button>
+        <div class="content">
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+          <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
+        </div>
+      </div>
     </div>
     <div class="waterMarker" v-waterMarker="{text:'QSC版权所有',textColor:'rgba(180, 180, 180, 0.4)'}">
       5.v-waterMarker
@@ -42,11 +65,19 @@
         7.v-clickOut
         <button @click="isImgShow = true">展示弹窗</button>
     </div>
-    <div v-clickOut="clickImgOut" v-if="isImgShow" class="pop">
+    <div v-clickOut="clickImgOut" v-if="isImgShow" class="pop" v-scrollPop>
           <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3363295869,2467511306&fm=26&gp=0.jpg" alt="">
           <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
           <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
+          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
+          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
+          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
     </div>
+    <!-- <div class="countdown">
+      8.v-countdown
+      <span v-countdown="12000000" formatter='HH小时mm分ss秒'></span>
+    </div> -->
+    <div class="obscuration" v-if="isScrollPopShow"></div>
   </div>
 </template>
 
@@ -59,8 +90,8 @@ export default {
     return {
       copyText: '',
       note: '',
-      permission:'4',
       isImgShow: false,
+      isScrollPopShow:false
     }
   },
   methods:{
@@ -74,11 +105,6 @@ export default {
     debounce(){
       console.log('debounce 防抖')
     },
-    changePermission(val){
-      let permission = this.permission*1 + val
-      this.permission = permission+''
-      console.log(this.permission);
-    }
   },
   components: {
   }
@@ -103,8 +129,31 @@ export default {
   .waterMarker {
     margin-bottom: 50px;
   }
-  .permission {
+  .scrollPop {
     margin-bottom: 50px;
+    .scroll-pop {
+      width: 400px;
+      height: 600px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      z-index: 1;
+      // overflow: auto;
+      .close {
+        position: absolute;
+        top: -50px;
+        right: -50px;
+        font-size: 30px;
+        z-index:1;
+      }
+      .content {
+        width: 100%;
+        height: 100%;
+        overflow: scroll;
+        background-color: #fff;
+      }
+    }
   }
   .clickOut {
     margin-bottom: 50px;
@@ -125,5 +174,24 @@ export default {
     width: 500px;
     height: 400px;
     background-color: rgba(0, 0, 0, 0.7);
+    overflow: scroll;
+  }
+  //8.倒计时
+  // .countdown {
+  //   span{
+  //     display: block;
+  //     width: 200px;
+  //     height: 50px;
+  //     color: #000;
+  //     font-size: 20px;
+  //   }
+  // }
+  .obscuration {
+      position: fixed;
+      top:0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      height: 100%;
+      width: 100%;
   }
 </style>
