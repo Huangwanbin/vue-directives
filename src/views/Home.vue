@@ -2,26 +2,26 @@
   <div class="home">
 
     <div class="copy">
-      <p>1.v-copy:</p>
+      <h3>1.v-copy:</h3>
       <input type="text" v-model="copyText" />
       <button v-copy="copyText">点我复制输入框里的内容</button>
     </div>
 
     <div class="long-press">
-      2.v-longprees
+      <h3>2.v-longprees</h3>
       <button v-longpress="longpress">长按</button>
     </div>
 
     <div class="debounce">
-      3.v-debounce
+      <h3>3.v-debounce</h3>
       <button v-debounce="debounce">debounce防抖</button>
     </div>
 
     <div class="clickOut">
-      4.v-clickOut
+      <h3>4.v-clickOut</h3>
       <button @click="isImgShow = true">展示弹窗</button>
     </div>
-    <div v-clickOut="clickImgOut" v-if="isImgShow" class="pop" v-scrollPop>
+    <div v-clickOut="clickImgOut" v-if="isImgShow" class="pop">
           <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3363295869,2467511306&fm=26&gp=0.jpg" alt="">
           <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
           <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
@@ -31,7 +31,7 @@
     </div>
 
     <div class="scrollPop">
-      5.v-scrollPop
+      <h3>5.v-scrollPop</h3>
       <button @click="isScrollPopShow = true">点击打开弹窗</button>
       <div class="scroll-pop" v-if="isScrollPopShow" v-scrollPop>
         <button class="close" @click="isScrollPopShow = false">X</button>
@@ -64,7 +64,7 @@
     </div>
 
     <div class="waterMarker" v-waterMarker="{text:'QSC版权所有',textColor:'rgba(180, 180, 180, 0.4)'}">
-      6.v-waterMarker
+      <h3>6.v-waterMarker</h3>
       <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
       <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
       <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
@@ -78,7 +78,7 @@
     </div>
 
     <div class="draggable" v-draggable>
-      7.v-draggable
+      <h3>7.v-draggable</h3>
     </div>
 
     <!-- <div class="countdown">
@@ -86,7 +86,9 @@
       <span v-countdown="12000000" formatter='HH小时mm分ss秒'></span>
     </div> -->
     <!-- 蒙层 -->
-    <div class="obscuration" v-if="isScrollPopShow"></div>
+    <div class="obscuration" v-if="isScrollPopShow">
+      <div v-dir:[sensor]="" v-if="isDirShow">123123</div>
+    </div>
   </div>
 </template>
 
@@ -100,6 +102,7 @@ export default {
       note: '',
       isImgShow: false,
       isScrollPopShow: false,
+      sensor:'',
     }
   },
   methods:{
@@ -172,6 +175,7 @@ export default {
     width: 300px;
     height: 300px;
     background-color: rgba(0, 0, 0, .6);
+    color: #fff;
   }
   .pop {
     position: fixed;
