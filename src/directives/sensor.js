@@ -33,14 +33,22 @@ const sensor = {
         showObj.name && showObj.value && sensors.track(showObj.name, {
             FileName: showObj.value
         });
-        clickObj.name && clickObj.value && el.addEventListener('click',function(){
-            clickObj.name === '$WebClick' && sensors.track(clickObj.name, {
-                $element_name: clickObj.value
-            });
-            clickObj.name === 'PopupBtnClick' && sensors.track(clickObj.name, {
-                FileName: clickObj.value
-            });
-        })
+        if (clickObj.name && clickObj.value) {
+            el.handler = function (clickObj) {
+                clickObj.name === '$WebClick' && sensors.track(clickObj.name, {
+                    $element_name: clickObj.value
+                });
+                clickObj.name === 'PopupBtnClick' && sensors.track(clickObj.name, {
+                    FileName: clickObj.value
+                });
+            }
+            el.addEventListener('click',el.handler)
+        }
+    },
+    // 指令与元素解绑的时候，移除事件绑定
+    unbind(el) {
+        el.handler && el.removeEventListener('click', el.handler)
+        delete el.handler;
     }
 }
   

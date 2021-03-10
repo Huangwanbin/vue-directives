@@ -1,12 +1,13 @@
 const longpress = {
     bind: function (el, binding, vNode) {
-      if (typeof binding.value !== 'function') {
-        throw 'callback must be a function'
-      }
+      //没绑定函数直接返回
+      if (!binding.expression) return
       // 定义变量
       let pressTimer = null
       // 创建计时器（ 2秒后执行函数 ）
       let start = (e) => {
+        console.log(e);
+        //e.type表示触发的事件类型如mousedown,touchstart等，e.button表示是哪个键按下0为鼠标左键，1为中键，2为右键
         if (e.type === 'click' && e.button !== 0) {
           return
         }
@@ -14,7 +15,7 @@ const longpress = {
           pressTimer = setTimeout(() => {
             handler()
           }, 2000)
-          //取消浏览器默认事件
+          //取消浏览器默认事件，如右键弹窗
           el.addEventListener('contextmenu', function(e) {
             e.preventDefault();
           })

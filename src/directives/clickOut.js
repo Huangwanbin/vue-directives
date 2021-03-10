@@ -6,22 +6,23 @@ const clickOut = {
                 return false
             }
             //判断指令中是否绑定了函数
-            if (binding.expression) {
-                //如果绑定了函数，则调用函数，此处binding.value就是handleClose方法
+            if (binding.expression) {//expression：字符串形式的指令表达式。例如 v-my-directive="1 + 1" 中，表达式为 "1 + 1"。
+                console.log(binding);
+                //如果绑定了函数，则调用函数，此处binding.value就是clickImgOut方法
                 binding.value(e)
             }
         }
         // 给当前元素绑定个私有变量，方便在unbind中可以解除事件监听
-        el.__vueClickOutside__ = clickHandler;
-        //不加异步会有bug，瞬间触发clickHandler函数
+        el.handler = clickHandler;
+        //加个异步，瞬间触发clickHandler函数
         setTimeout(() => {
-            document.addEventListener('click',clickHandler);
+            document.addEventListener('click',el.handler);
         }, 0);
     },
     unbind(el,binding){
         //解除事件监听
-        document.removeEventListener('click',el.__vueClickOutside__);
-        delete el.__vueClickOutside__;
+        document.removeEventListener('click',el.handler);
+        delete el.handler;
     }
 }
 

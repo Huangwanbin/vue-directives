@@ -6,12 +6,12 @@ function addWaterMarker(str, parentNode, font, textColor) {
     can.height = 150
     can.style.display = 'none'
     var cans = can.getContext('2d')
-    cans.rotate((-20 * Math.PI) / 180)
+    cans.rotate((-20 * Math.PI) / 180) //Math.PI = π = 180°
     cans.font = font || '16px Microsoft JhengHei'
     cans.fillStyle = textColor || 'rgba(180, 180, 180, 0.3)'
     cans.textAlign = 'left'
     cans.textBaseline = 'Middle'
-    cans.fillText(str, can.width / 10, can.height / 2)
+    cans.fillText(str, can.width / 10, can.height / 2) //fillText为在canvas里绘制文本
     parentNode.style.backgroundImage = 'url(' + can.toDataURL('image/png') + ')'
   }
   

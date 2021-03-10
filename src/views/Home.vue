@@ -12,7 +12,7 @@
 
     <div class="long-press">
       <h3>2.v-longprees</h3>
-      <button v-longpress="longpress">长按</button>
+      <span v-longpress="longpress">长按</span>
     </div>
 
     <div class="debounce">
@@ -158,23 +158,26 @@ export default {
   .scrollPop {
     margin-bottom: 50px;
     .scroll-pop {
-      width: 400px;
-      height: 600px;
+      width: 60%;
+      height: 70%;
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%,-50%);
       z-index: 1;
       .close {
+        border: none;
+        border-radius: 50%;
         position: absolute;
-        top: -50px;
-        right: -50px;
+        top: -40px;
+        right: -40px;
         font-size: 30px;
         z-index:1;
       }
       .content {
         width: 100%;
         height: 100%;
+        margin: 0 auto;
         overflow: scroll;
         background-color: #fff;
       }
