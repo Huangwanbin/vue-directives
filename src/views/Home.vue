@@ -5,6 +5,9 @@
       <h3>1.v-copy:</h3>
       <input type="text" v-model="copyText" />
       <button v-copy="copyText">点我复制输入框里的内容</button>
+      <p class="code">这是你的验证码：<span>{{verificationCode}}</span></p>
+      <button @click="getCode">点击生成验证码</button>
+      <button v-copy="verificationCode">点击复制验证码</button>
     </div>
 
     <div class="long-press">
@@ -81,14 +84,13 @@
       <h3>7.v-draggable</h3>
     </div>
 
-    <!-- <div class="countdown">
-      8.v-countdown
-      <span v-countdown="12000000" formatter='HH小时mm分ss秒'></span>
-    </div> -->
-    <!-- 蒙层 -->
-    <div class="obscuration" v-if="isScrollPopShow">
-      <div v-dir:[sensor]="" v-if="isDirShow">123123</div>
+    <div class="sensor">
+      8.v-sensor
+      <button @click="isSensorShow = true">点击上报神策</button>
+      <p v-if="isSensorShow" v-sensor="{el:'sensor_element'}">上报</p>
     </div>
+    <!-- 蒙层 -->
+    <div class="obscuration" v-if="isScrollPopShow" v-dir></div>
   </div>
 </template>
 
@@ -99,13 +101,21 @@ export default {
   data(){
     return {
       copyText: '',
-      note: '',
+      verificationCode:'',
       isImgShow: false,
       isScrollPopShow: false,
-      sensor:'',
+      isSensorShow:false,
     }
   },
   methods:{
+    getCode(){
+      let code = ''
+      for (let i = 0; i < 6; i++) {
+        let random = Math.floor(Math.random()*10)
+        code += random
+      }
+      this.verificationCode = code
+    },
     clickImgOut(){
       console.log('点击图片外部')
       this.isImgShow = false
@@ -130,6 +140,11 @@ export default {
   }
   .copy {
     margin-bottom: 50px;
+    .code {
+      span {
+        color: red;
+      }
+    }
   }
   .long-press {
     margin-bottom: 50px;

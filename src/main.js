@@ -3,26 +3,26 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import Directives from './directives/directive'
+import sensors from './library/sensor'
 
+Vue.use(sensors)
 Vue.use(Directives)
 
-Vue.use({
-  install(e) {
-    // console.log('e',e,window);
-  }
-})
+// Vue.use({
+//   install(Vue) {
+//     console.log('Vue:',Vue,'this:',this);
+//   }
+// })
 
 Vue.directive('dir', {
   bind: function (el, binding, vnode) {
     console.log("bind");
-    // console.log(binding.value,binding.arg);
   },
   inserted:function(){
     console.log("inserted");
   },
   update:function (el, binding, vnode) {
     console.log("update");
-    console.log(binding.value,binding.arg);
   },
   conponentUpdated:function(){
     console.log("conponentUpadte");

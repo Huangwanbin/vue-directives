@@ -1,7 +1,7 @@
 const clickOut = {
     bind(el,binding,vnode){
         function clickHandler(e) {
-            //先判断电机的元素是否是本身，如果是本身，则返回
+            //先判断点击的元素是否是本身，如果是本身，则返回
             if (el.contains(e.target)) {
                 return false
             }

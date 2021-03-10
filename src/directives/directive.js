@@ -5,6 +5,7 @@ import clickOut from './clickOut'
 import scrollPop from './scrollPop'
 import waterMarker from './waterMarker'
 import draggable from './draggable'
+import sensor from './sensor'
 // 自定义指令
 const directives = {
   copy,
@@ -14,6 +15,7 @@ const directives = {
   scrollPop,
   waterMarker,
   draggable,
+  sensor
 }
 
 export default {
