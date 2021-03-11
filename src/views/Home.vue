@@ -12,11 +12,12 @@
 
     <div class="long-press">
       <h3>2.v-longprees</h3>
-      <span v-longpress="longpress">长按</span>
+      <button v-longpress="longpress">长按</button>
     </div>
 
     <div class="debounce">
       <h3>3.v-debounce</h3>
+      <input type="text" v-debounce="debounce">
       <button v-debounce="debounce">debounce防抖</button>
     </div>
 
@@ -86,8 +87,8 @@
 
     <div class="sensor">
       8.v-sensor
-      <button @click="isSensorShow = true">点击上报神策</button>
-      <p v-if="isSensorShow" v-sensor="{el:'sensor_element'}">上报</p>
+      <button @click="clickme" v-sensor="{el:'sensor_element',elClick:'sensor_element'}">点击上报神策</button>
+      <p v-if="isSensorShow" >上报</p>
     </div>
     <!-- 蒙层 -->
     <div class="obscuration" v-if="isScrollPopShow" v-dir></div>
@@ -126,6 +127,10 @@ export default {
     debounce(){
       console.log('debounce 防抖')
     },
+    clickme(){
+      window.location.href = 'https://www.baidu.com'
+      this.isSensorShow = true
+    }
   },
   components: {
   }

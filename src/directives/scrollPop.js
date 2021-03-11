@@ -6,7 +6,7 @@ const scrollPop = {
     // },
     // unbind:function (el,binding,vnode) {
     //     document.getElementsByTagName('body')[0].style.overflow = "auto"
-    // }
+    // },
     bind(el) {
         el.st = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
         let cssStr = `overflow: hidden;width: 100%; height: 100%; position: fixed; top: ${- el.st}px;`
