@@ -18,11 +18,15 @@
     <div class="debounce">
       <h3>3.v-debounce</h3>
       <input type="text" v-debounce="debounce">
-      <button v-debounce="debounce">debounce防抖</button>
+    </div>
+
+    <div class="throttle">
+      <h3>4.v-throttle</h3>
+      <button v-throttle="throttle">throttle节流</button>
     </div>
 
     <div class="clickOut">
-      <h3>4.v-clickOut</h3>
+      <h3>5.v-clickOut</h3>
       <button @click="isImgShow = true">展示弹窗</button>
     </div>
     <div v-clickOut="clickImgOut" v-if="isImgShow" class="pop">
@@ -35,7 +39,7 @@
     </div>
 
     <div class="scrollPop">
-      <h3>5.v-scrollPop</h3>
+      <h3>6.v-scrollPop</h3>
       <button @click="isScrollPopShow = true">点击打开弹窗</button>
       <div class="scroll-pop" v-if="isScrollPopShow" v-scrollPop>
         <button class="close" @click="isScrollPopShow = false">X</button>
@@ -68,7 +72,7 @@
     </div>
 
     <div class="waterMarker" v-waterMarker="{text:'QSC版权所有',textColor:'rgba(180, 180, 180, 0.4)'}">
-      <h3>6.v-waterMarker</h3>
+      <h3>7.v-waterMarker</h3>
       <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
       <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
       <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
@@ -79,10 +83,6 @@
       <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
       <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
       <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-    </div>
-
-    <div class="draggable" v-draggable>
-      <h3>7.v-draggable</h3>
     </div>
 
     <div class="sensor">
@@ -126,6 +126,9 @@ export default {
     },
     debounce(){
       console.log('debounce 防抖')
+    },
+    throttle(){
+      console.log('throttle 节流')
     },
     clickme(){
       window.location.href = 'https://www.baidu.com'
