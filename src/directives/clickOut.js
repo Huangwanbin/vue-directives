@@ -6,7 +6,7 @@ const clickOut = {
                 return false
             }
             //判断指令中是否绑定了函数
-            if (binding.expression) {//expression：字符串形式的指令表达式。例如 v-my-directive="1 + 1" 中，表达式为 "1 + 1"。
+            if (typeof binding.value !== 'function') {
                 console.log(binding);
                 //如果绑定了函数，则调用函数，此处binding.value就是clickImgOut方法
                 binding.value(e)

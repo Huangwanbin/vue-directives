@@ -1,14 +1,15 @@
 const longpress = {
     bind: function (el, binding, vNode) {
       //没绑定函数直接返回
-      if (!binding.expression) return
+      if (typeof binding.value !== 'function') return
       // 定义变量
       let pressTimer = null
       // 创建计时器（ 2秒后执行函数 ）
       let start = (e) => {
-        console.log(e);
         //e.type表示触发的事件类型如mousedown,touchstart等，e.button表示是哪个键按下0为鼠标左键，1为中键，2为右键
-        if (e.type === 'click' && e.button !== 0) {
+        if (  (e.type === 'touchstart' && e.button && e.button !== 0) || 
+              (e.type === 'mousedown' && e.touches && e.touches.length == 1)
+        ) {
           return
         }
         if (pressTimer === null) {

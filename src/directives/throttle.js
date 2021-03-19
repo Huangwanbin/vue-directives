@@ -1,6 +1,6 @@
 const throttle = {
     bind:function (el,binding) {
-        if (!binding.expression||typeof binding.value !== 'function') return
+        if (typeof binding.value !== 'function') return
         el._flag = true;
         el._timer = null
         el.handler = function () {
