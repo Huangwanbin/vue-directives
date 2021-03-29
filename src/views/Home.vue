@@ -5,7 +5,7 @@
       <h3>1.v-copy:</h3>
       <input type="text" v-model="copyText" />
       <button v-copy="copyText">点我复制输入框里的内容</button>
-      <p class="code">这是你的验证码：<span>{{verificationCode}}</span></p>
+      <p class="code">这是你的验证码：<span v-dir>{{verificationCode}}</span></p>
       <button @click="getCode">点击生成验证码</button>
       <button v-copy="verificationCode">点击复制验证码</button>
     </div>
@@ -19,26 +19,11 @@
       <h3>3.v-debounce</h3>
       <input v-debounce="{fn: debounce, event: 'input', time: 1000}" />
       <div v-debounce="{fn: debounce, event: 'scroll', time: 1000}">
-          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
+          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
+          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
+          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
+          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
+          <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
       </div>
     </div>
 
@@ -93,18 +78,12 @@
       </div>
     </div>
 
-    <div class="waterMarker" v-waterMarker="{text:'QSC版权所有',textColor:'rgba(180, 180, 180, 0.4)'}">
-      <h3>7.v-waterMarker</h3>
-      <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-      <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-      <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-      <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-      <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-      <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-      <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-      <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-      <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
-      <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
+    <div class="loading">
+      7.v-loading
+      <button @click="fetchData">模拟请求数据</button>
+      <div class="data-box" v-loading="loading">
+        {{text}}
+      </div>
     </div>
 
     <div class="sensor">
@@ -128,6 +107,8 @@ export default {
       isImgShow: false,
       isScrollPopShow: false,
       isSensorShow:false,
+      loading: false,
+      text: '',
     }
   },
   methods:{
@@ -147,17 +128,26 @@ export default {
       console.log('press');
     },
     debounce(){
-      console.log('debounce 防抖')
+      console.log('debounce 防抖',this)
     },
     throttle(){
-      console.log('throttle 节流')
+      console.log('throttle 节流',this)
     },
     clickme(){
       window.location.href = 'https://www.baidu.com'
       this.isSensorShow = true
+    },
+    fetchData(){
+      this.loading = true;
+      let timer=setTimeout(() => {
+        this.text = '数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据'
+        this.loading = false;
+      }, 5500);
     }
   },
   components: {
+  },
+  mounted(){
   }
 }
 </script>
@@ -182,14 +172,17 @@ export default {
   .debounce {
     margin-bottom: 50px;
     >div {
-      width: 200px;
-      height: 300px;
-      overflow: scroll;
+      width: 100%;
+        white-space: nowrap;
+        overflow: auto;
+      p {
+        height: 22px;
+      }
     }
   }
-  .waterMarker {
-    margin-bottom: 50px;
-  }
+  // .waterMarker {
+  //   margin-bottom: 50px;
+  // }
   .scrollPop {
     margin-bottom: 50px;
     .scroll-pop {
@@ -221,15 +214,15 @@ export default {
   .clickOut {
     margin-bottom: 50px;
   }
-  .draggable {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 300px;
-    height: 300px;
-    background-color: rgba(0, 0, 0, .6);
-    color: #fff;
-  }
+  // .draggable {
+  //   position: absolute;
+  //   bottom: 0;
+  //   left: 0;
+  //   width: 300px;
+  //   height: 300px;
+  //   background-color: rgba(0, 0, 0, .6);
+  //   color: #fff;
+  // }
   .pop {
     position: fixed;
     top: 50%;
@@ -239,6 +232,12 @@ export default {
     height: 400px;
     background-color: rgba(0, 0, 0, 0.7);
     overflow: scroll;
+  }
+  .loading {
+    .data-box {
+      width: 300px;
+      height: 300px;
+    }
   }
   //8.倒计时
   // .countdown {

@@ -24,8 +24,8 @@ Vue.directive('dir', {
   update:function (el, binding, vnode) {
     console.log("update");
   },
-  conponentUpdated:function(){
-    console.log("conponentUpadte");
+  componentUpdated:function(){
+    console.log("componentUpdated");
   },
   unbind:function(){
     console.log("unbind");

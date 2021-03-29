@@ -19,13 +19,15 @@ const copy = {
         document.body.appendChild(textarea)
         // 选中值并复制
         textarea.select()
-        const result = document.execCommand('Copy')
+        const result = document.execCommand && document.execCommand('Copy') || false;
         if (result) {
           console.log('复制成功') // 可根据项目UI仔细设计
+        }else {
+          console.log('复制，请手动复制')
         }
         document.body.removeChild(textarea)
       }
-      // 绑定点击事件，就是所谓的一键 copy 啦
+      // 绑定点击事件
       el.addEventListener('click', el.handler)
     },
     // 当传进来的值更新的时候触发
