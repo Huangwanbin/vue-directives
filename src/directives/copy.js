@@ -37,7 +37,6 @@ const copy = {
     // 指令与元素解绑的时候，移除事件绑定
     unbind(el) {
       el.removeEventListener('click', el.handler)
-      delete el.handler;
     },
   }
   
