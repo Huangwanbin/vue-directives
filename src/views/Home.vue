@@ -154,6 +154,8 @@ export default {
 
 <style lang="less" scoped>
   .home{
+    box-sizing: border-box;
+    padding-left: 1%;
     width: 100%;
     height: 100%;
     position: relative;
