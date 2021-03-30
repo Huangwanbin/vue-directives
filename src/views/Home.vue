@@ -36,7 +36,7 @@
       <h3>5.v-clickOut</h3>
       <button @click="isImgShow = true">展示弹窗</button>
     </div>
-    <div v-clickOut="clickImgOut" v-if="isImgShow" class="pop">
+    <div v-click-out="clickImgOut" v-if="isImgShow" class="pop">
           <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3363295869,2467511306&fm=26&gp=0.jpg" alt="">
           <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
           <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
@@ -48,7 +48,7 @@
     <div class="scrollPop">
       <h3>6.v-scrollPop</h3>
       <button @click="isScrollPopShow = true">点击打开弹窗</button>
-      <div class="scroll-pop" v-if="isScrollPopShow" v-scrollPop="'smooth'">
+      <div class="scroll-pop" v-if="isScrollPopShow" v-scroll-pop="'smooth'">
         <button class="close" @click="isScrollPopShow = false">X</button>
         <div class="content">
           <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
