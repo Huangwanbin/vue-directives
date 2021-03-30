@@ -1,3 +1,4 @@
+//创建蒙层，样式自行修改
 function createMask() {
     const ele = document.createElement("div");
     ele.style.position = "absolute";
@@ -16,14 +17,16 @@ function createMask() {
   
   const mask = createMask();
   let mountedFlag = false;//开关，是否已经出现过loading
-  
+  //添加 | 删除 loading
   function checkLoading(node, isLoading) {
     if (node) {
+      //展示loading
       if (isLoading) {
         node.style.position = "relative";
         node.appendChild(mask);
         mountedFlag = true;
       } else if (mountedFlag) {
+        //关闭loading
         node.removeChild(mask);
         mountedFlag = false;
       }

@@ -1,17 +1,17 @@
 const throttle = {
-    bind:function (el,binding) {
-        if (typeof binding.value !== 'function') return
-        el._flag = true;
+    bind:function (el,{value:{fn,time}}) {
+        if (typeof fn !== 'function') return
+        el._flag = true;//开关默认为开
         el._timer = null
         el.handler = function () {
-            // console.log('el',Object.keys(el),Object.values(el));
             if (!el._flag) return;
-            el._flag && binding.value()
+            //执行之后开关关闭
+            el._flag && fn()
             el._flag = false
             el._timer && clearTimeout(el.timer)
             el._timer = setTimeout(() => {
-                el._flag = true;
-            }, 3000);
+                el._flag = true;//三秒后开关开启
+            }, time);
         }
         el.addEventListener('click',el.handler)
     },

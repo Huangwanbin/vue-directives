@@ -2,19 +2,20 @@ const longpress = {
     bind: function (el, binding, vNode) {
       //没绑定函数直接返回
       if (typeof binding.value !== 'function') return
-      // 定义变量
-      let pressTimer = null
+      // 定义定时器变量
+      el.pressTimer = null
       // 创建计时器（ 2秒后执行函数 ）
-      let start = (e) => {
-        //e.type表示触发的事件类型如mousedown,touchstart等，e.button表示是哪个键按下0为鼠标左键，1为中键，2为右键
-        if (  (e.type === 'touchstart' && e.button && e.button !== 0) || 
-              (e.type === 'mousedown' && e.touches && e.touches.length == 1)
-        ) {
-          return
-        }
-        if (pressTimer === null) {
-          pressTimer = setTimeout(() => {
-            handler()
+      el._start = (e) => {
+        //e.type表示触发的事件类型如mousedown,touchstart等
+        //pc端: e.button表示是哪个键按下0为鼠标左键，1为中键，2为右键
+        //移动端: e.touches表示同时按下的键为个数
+        if (  (e.type === 'mousedown' && e.button && e.button !== 0) || 
+              (e.type === 'touchstart' && e.touches && e.touches.length > 1)
+        ) return;
+        //定时长按两秒后执行事件
+        if (el.pressTimer === null) {
+          el.pressTimer = setTimeout(() => {
+            binding.value()
           }, 2000)
           //取消浏览器默认事件，如右键弹窗
           el.addEventListener('contextmenu', function(e) {
@@ -22,33 +23,32 @@ const longpress = {
           })
         }
       }
-      // 取消计时器
-      let cancel = (e) => {
-        if (pressTimer !== null) {
-          clearTimeout(pressTimer)
-          pressTimer = null
+      // 如果两秒内松手，则取消计时器
+      el._cancel = (e) => {
+        if (el.pressTimer !== null) {
+          clearTimeout(el.pressTimer)
+          el.pressTimer = null
         }
       }
-      // 运行函数
-      const handler = (e) => {
-        binding.value(e)
-      }
       // 添加事件监听器
-      el.addEventListener('mousedown', start)
-      el.addEventListener('touchstart', start)
+      el.addEventListener('mousedown', el._start)
+      el.addEventListener('touchstart', el._start)
       // 取消计时器
-      el.addEventListener('click', cancel)
-      el.addEventListener('mouseout', cancel)
-      el.addEventListener('touchend', cancel)
-      el.addEventListener('touchcancel', cancel)
-    },
-    // 当传进来的值更新的时候触发
-    componentUpdated(el, { value }) {
-      el.$value = value
+      el.addEventListener('click', el._cancel)
+      el.addEventListener('mouseout', el._cancel)
+      el.addEventListener('touchend', el._cancel)
+      el.addEventListener('touchcancel', el._cancel)
     },
     // 指令与元素解绑的时候，移除事件绑定
     unbind(el) {
-      el.removeEventListener('click', el.handler)
+      // 移除事件监听器
+      el.removeEventListener('mousedown', el._start)
+      el.removeEventListener('touchstart', el._start)
+      // 移除取消计时器
+      el.removeEventListener('click', el._cancel)
+      el.removeEventListener('mouseout', el._cancel)
+      el.removeEventListener('touchend', el._cancel)
+      el.removeEventListener('touchcancel', el._cancel)
     },
   }
   

@@ -23,7 +23,7 @@ const copy = {
         if (result) {
           console.log('复制成功') // 可根据项目UI仔细设计
         }else {
-          console.log('复制，请手动复制')
+          console.log('复制失败，请手动复制')
         }
         document.body.removeChild(textarea)
       }

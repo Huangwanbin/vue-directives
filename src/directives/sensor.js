@@ -1,40 +1,49 @@
 const sensor = {
     // 当被绑定的元素插入到 DOM 中时
-    inserted: function (el,binding) {
-        let sensorObj = binding.value ,showObj={ name :'',value:''} ,clickObj= {name:'',value:''};
+    inserted: function (el,{value: sensorObj}) {
+        let showObj={} ,clickObj={}//showObj代表展示类埋点，clickObj代表点击类埋点
+        //如果传入参数格式不为对象，则不向下执行
         if (!Object.prototype.toString.call(sensorObj) === '[object Object]'|| JSON.stringify(sensorObj) == "{}") return
-        console.log(sensorObj);
+        //遍历传入对象参数，根据key值确定埋点类型
         for (const key in sensorObj) {
             if (Object.hasOwnProperty.call(sensorObj, key)) {
                 switch (key) {
                     case 'el':
-                        showObj.name= 'ElementShow';
-                        showObj.value= sensorObj[key]
+                        showObj= {
+                            name:'ElementShow',
+                            value: sensorObj[key]
+                        };
                         break;
                     case 'pop':
-                        showObj.name= 'PopupTrack';
-                        showObj.value= sensorObj[key]
+                        showObj= {
+                            name:'PopupTrack',
+                            value: sensorObj[key]
+                        };
                         break;
                     case 'elClick':
-                        clickObj.name= '$WebClick';
-                        clickObj.value= sensorObj[key]
+                        clickObj= {
+                            name:'$WebClick',
+                            value: sensorObj[key]
+                        };
                         break;
                     case 'popClick':
-                        clickObj.name= 'PopupBtnClick';
-                        clickObj.value= sensorObj[key]
+                        clickObj= {
+                            name:'PopupBtnClick',
+                            value: sensorObj[key]
+                        };
                         break;  
                     default:
                         break;
                 }
             }
         }
-        console.log('v-sensor',binding.value,showObj,clickObj);
-        // 聚焦元素
-        showObj.name && showObj.value && sensors.track(showObj.name, {
+        // 展示类埋点执行
+        showObj.value && sensors.track(showObj.name, {
             FileName: showObj.value
         });
-        if (clickObj.name && clickObj.value) {
-            el.handler = function (clickObj) {
+        //点击类埋点执行
+        if (clickObj.value) {
+            el.handler = function () {
                 clickObj.name === '$WebClick' && sensors.track(clickObj.name, {
                     $element_name: clickObj.value
                 });

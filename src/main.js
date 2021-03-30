@@ -16,16 +16,16 @@ Vue.use(Directives)
 
 Vue.directive('dir', {
   bind: function (el, binding, vnode) {
-    console.log("bind");
+    console.log("bind",el.parentNode);
   },
-  inserted:function(){
-    console.log("inserted");
+  inserted:function(el){
+    console.log("inserted",el.parentNode);
   },
   update:function (el, binding, vnode) {
-    console.log("update");
+    // console.log("update");
   },
   componentUpdated:function(){
-    console.log("componentUpdated");
+    // console.log("componentUpdated");
   },
   unbind:function(){
     console.log("unbind");

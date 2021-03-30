@@ -13,7 +13,9 @@ const clickOut = {
         // 给当前元素绑定个私有变量，方便在unbind中可以解除事件监听
         el.handler = clickHandler;
         //添加事件监听
-        document.addEventListener('click',el.handler);
+        setTimeout(() => {
+            document.addEventListener('click',el.handler);
+        }, 0);
     },
     unbind(el,binding){
         //解除事件监听

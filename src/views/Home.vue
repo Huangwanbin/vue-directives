@@ -17,8 +17,8 @@
 
     <div class="debounce">
       <h3>3.v-debounce</h3>
-      <input v-debounce="{fn: debounce, event: 'input', time: 1000}" />
-      <div v-debounce="{fn: debounce, event: 'scroll', time: 1000}">
+      <input v-debounce="{fn: debounce, event: 'input', time: 5000}" />
+      <div v-debounce="{fn: debounce, event: 'scroll', time: 5000}">
           <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
           <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
           <p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
@@ -29,7 +29,7 @@
 
     <div class="throttle">
       <h3>4.v-throttle</h3>
-      <button v-throttle="throttle">throttle节流</button>
+      <button v-throttle="{fn: throttle,time:3000}">throttle节流</button>
     </div>
 
     <div class="clickOut">
@@ -48,7 +48,7 @@
     <div class="scrollPop">
       <h3>6.v-scrollPop</h3>
       <button @click="isScrollPopShow = true">点击打开弹窗</button>
-      <div class="scroll-pop" v-if="isScrollPopShow" v-scrollPop>
+      <div class="scroll-pop" v-if="isScrollPopShow" v-scrollPop="'smooth'">
         <button class="close" @click="isScrollPopShow = false">X</button>
         <div class="content">
           <p>这是很长一段文字，请耐心读完，然后你会发现这段文字并没有什么意义。</p>
@@ -88,8 +88,8 @@
 
     <div class="sensor">
       8.v-sensor
-      <button @click="clickme" v-sensor="{el:'sensor_element',elClick:'sensor_element'}">点击上报神策</button>
-      <p v-if="isSensorShow" >上报</p>
+      <button @click="clickme" v-sensor="{el:'sensor_element_btn',elClick:'sensor_element_btn'}">点击上报神策</button>
+      <p v-if="isSensorShow" v-sensor="{el:'sensor_element_p'}">上报</p>
     </div>
     <!-- 蒙层 -->
     <div class="obscuration" v-if="isScrollPopShow" v-dir></div>
@@ -134,7 +134,7 @@ export default {
       console.log('throttle 节流',this)
     },
     clickme(){
-      window.location.href = 'https://www.baidu.com'
+      // window.location.href = 'https://www.baidu.com'
       this.isSensorShow = true
     },
     fetchData(){
