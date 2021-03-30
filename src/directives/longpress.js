@@ -1,7 +1,7 @@
 const longpress = {
-    bind: function (el, binding, vNode) {
+    bind: function (el, {value:{fn,time}}, vNode) {
       //没绑定函数直接返回
-      if (typeof binding.value !== 'function') return
+      if (typeof fn !== 'function') return
       // 定义定时器变量
       el.pressTimer = null
       // 创建计时器（ 2秒后执行函数 ）
@@ -15,8 +15,8 @@ const longpress = {
         //定时长按两秒后执行事件
         if (el.pressTimer === null) {
           el.pressTimer = setTimeout(() => {
-            binding.value()
-          }, 2000)
+            fn()
+          }, time)
           //取消浏览器默认事件，如右键弹窗
           el.addEventListener('contextmenu', function(e) {
             e.preventDefault();

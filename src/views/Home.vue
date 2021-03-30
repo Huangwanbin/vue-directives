@@ -12,7 +12,7 @@
 
     <div class="long-press">
       <h3>2.v-longprees</h3>
-      <button v-longpress="longpress">长按</button>
+      <button v-longpress="{fn: longpress,time:2000}">长按</button>
     </div>
 
     <div class="debounce">
