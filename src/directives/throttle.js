@@ -8,7 +8,10 @@ const throttle = {
             //执行之后开关关闭
             el._flag && fn()
             el._flag = false
-            el._timer && clearTimeout(el.timer)
+            if (el._timer !== null) {
+                clearTimeout(el._timer)
+                el._timer = null
+            }
             el._timer = setTimeout(() => {
                 el._flag = true;//三秒后开关开启
             }, time);
