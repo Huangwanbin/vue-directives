@@ -6,6 +6,7 @@ import clickOut from './clickOut'
 import scrollPop from './scrollPop'
 import loading from './loading'
 import sensor from './sensor'
+import infiniteScroll from './infiniteScroll'
 // 自定义指令
 const directives = {
   copy,
@@ -16,6 +17,7 @@ const directives = {
   scrollPop,
   loading,
   sensor,
+  infiniteScroll
 }
 
 export default {

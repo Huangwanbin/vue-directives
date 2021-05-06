@@ -91,6 +91,11 @@
       <button @click="clickme" v-sensor="{el:'sensor_element_btn',elClick:'sensor_element_btn'}">点击上报神策</button>
       <p v-if="isSensorShow" v-sensor="{el:'sensor_element_p'}">上报</p>
     </div>
+    <div class="scroll" v-infinite-scroll="getList">
+      <ul>
+        <li v-for="(item,index) in list" :key="index">{{index}}</li>
+      </ul>
+    </div>
     <!-- 蒙层 -->
     <div class="obscuration" v-if="isScrollPopShow" v-dir></div>
   </div>
@@ -109,9 +114,16 @@ export default {
       isSensorShow:false,
       loading: false,
       text: '',
+      list:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
     }
   },
   methods:{
+    getList(){
+      setTimeout(() => {
+        let list = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+        this.list.push(...list)
+      }, 500);
+    },
     getCode(){
       let code = ''
       for (let i = 0; i < 6; i++) {
