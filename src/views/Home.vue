@@ -194,9 +194,6 @@ export default {
       }
     }
   }
-  // .waterMarker {
-  //   margin-bottom: 50px;
-  // }
   .scrollPop {
     margin-bottom: 50px;
     .scroll-pop {
@@ -228,15 +225,6 @@ export default {
   .clickOut {
     margin-bottom: 50px;
   }
-  // .draggable {
-  //   position: absolute;
-  //   bottom: 0;
-  //   left: 0;
-  //   width: 300px;
-  //   height: 300px;
-  //   background-color: rgba(0, 0, 0, .6);
-  //   color: #fff;
-  // }
   .pop {
     position: fixed;
     top: 50%;
@@ -253,16 +241,7 @@ export default {
       height: 300px;
     }
   }
-  //8.倒计时
-  // .countdown {
-  //   span{
-  //     display: block;
-  //     width: 200px;
-  //     height: 50px;
-  //     color: #000;
-  //     font-size: 20px;
-  //   }
-  // }
+
   .obscuration {
       position: fixed;
       top:0;
